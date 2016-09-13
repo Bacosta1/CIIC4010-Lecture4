@@ -7,44 +7,76 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
 public class MutableCar {
-	
+
 	private double xPos = 0;
 	private double yPos = 0;
-	private Color color;
-	
+	private Color color = Color.BLACK;
+
+	private int horizontalSpeed = 0;  // Car speed in pixels per second
+	private int horizontalDirection;
+
+
 	public MutableCar(double x, double y) {
 		this.xPos = x;
 		this.yPos = y;
+		horizontalSpeed = 10;
+		horizontalDirection = 1;  // Initially moving right
 	}
-	
+
 	public MutableCar(double x, double y, Color color) {
 		this.xPos = x;
 		this.yPos = y;
 		this.color = color;
+		horizontalSpeed = 10;
+		horizontalDirection = 1;  // Initially moving right
 	}
-	
+
+	public MutableCar(double x, double y, Color color, int hSpeed, int HDir) {
+		this.xPos = x;
+		this.yPos = y;
+		this.color = color;
+		horizontalSpeed = hSpeed;
+		horizontalDirection = HDir;
+	}
+
 	public Color getColor() {
 		return this.color;
 	}
-	
+
 	public double getXPos() {
 		return this.xPos;
 	}
-	 public double getYPos() {
-		 return this.yPos;
-	 }
-	
+	public double getYPos() {
+		return this.yPos;
+	}
+
+	public int getHorizontalSpeed() {
+		return horizontalSpeed;
+	}
+
+	public int getHorizontalDirection() {
+		return horizontalDirection;
+	}
+
 	public void setPosition(double xPos, double yPos) {
 		this.xPos = xPos;
 		this.yPos = yPos;
 	}
-	
+
 	public void setColor(Color color) {
 		this.color = color;
 	}
-	
+
+	public void setHorizontalSpeed(int horizontalSpeed) {
+		this.horizontalSpeed = horizontalSpeed;
+	}
+
+	public void setHorizontalDirection(int horizontalDirection) {
+		this.horizontalDirection = horizontalDirection;
+	}
+
 	public void draw(Graphics g) {
-				
+
 		Graphics2D g2 = (Graphics2D) g;
 
 		Point2D.Double rearWindowStart = new Point2D.Double(this.xPos+10, this.yPos+10);
